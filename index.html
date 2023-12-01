@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Willkommen auf der Retro-Seite</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Helvetica', sans-serif;
+            flex-direction: row; /* Änderung auf row für horizontale Anordnung */
+            background-color: #990000; /* Dunkelrot als Hintergrundfarbe */
+            color: #fff;
+        }
+
+        #content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        #datumButton {
+            background-color: #d9534f; /* Bootstrap Rot */
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        #datumAnzeige {
+            display: none;
+            font-size: 20px;
+            text-transform: uppercase; /* Versal für Datum */
+            margin-bottom: 20px; /* Abstand zum Video */
+        }
+
+        #video {
+            display: none;
+            width: 66%; /* 2/3 der Breite */
+            max-width: 800px; /* Maximalbreite für größere Bildschirme */
+            margin-right: 20px; /* Abstand zum Willkommenstext */
+        }
+
+        #begruessung {
+            display: none;
+            font-size: 18px;
+            margin-top: 20px;
+            max-width: 400px; /* Maximalbreite für Willkommenstext */
+            line-height: 1.5; /* Zeilenhöhe für bessere Lesbarkeit */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="content">
+        <button onclick="zeigeDatum()" id="datumButton">Zeige Datum</button>
+        <p id="datumAnzeige"></p>
+        <video src="https://images-ext-2.discordapp.net/external/KHko0GFE6KrqgNsOj2K9RdhqG9h_kX92kz36SeZ_Pgw/https/media.tenor.com/f5SDR3fuKEcAAAPo/family-guy-dancing.mp4" autoplay loop muted id="video"></video>
+        <p id="begruessung"></p>
+    </div>
+
+    <script>
+        function zeigeDatum() {
+            // Hole das aktuelle Datum
+            var heute = new Date();
+            var tag = heute.getDate();
+            var monat = heute.getMonth() + 1; // Monate beginnen mit 0
+            var jahr = heute.getFullYear();
+
+            // Formatieren des Datums
+            var formatiertesDatum = tag + '.' + monat + '.' + jahr;
+
+            // Anzeige des Datums
+            document.getElementById('datumAnzeige').innerText = 'Heute ist der ' + formatiertesDatum;
+            document.getElementById('datumAnzeige').style.display = 'block';
+
+            // Video anzeigen
+            document.getElementById('video').style.display = 'block';
+
+            // Begrüßungstext anzeigen
+            document.getElementById('begruessung').innerText = 'Herzlich willkommen! Genieße deine Zeit auf unserer Retro-Seite.';
+            document.getElementById('begruessung').style.display = 'block';
+
+            // Button ausblenden
+            document.getElementById('datumButton').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
